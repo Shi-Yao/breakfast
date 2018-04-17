@@ -1,0 +1,16 @@
+get_max_length
+MultiSelectField
+exceptions
+string_type
+MultiSelectFormField
+MSFList
+python_2_unicode_compatible
+sys
+add_introspection_rules
+models
+MaxChoicesValidator
+capfirst
+VERSION
+MaxValueMultiFieldValidator
+add_metaclass
+MinChoicesValidator

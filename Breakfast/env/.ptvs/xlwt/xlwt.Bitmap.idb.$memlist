@@ -1,0 +1,11 @@
+_size_row
+BiffRecord
+ImRawDataBmpRecord
+ObjBmpRecord
+_position_image
+pack
+unpack
+_process_bitmap_data
+_size_col
+_process_bitmap
+ImDataBmpRecord

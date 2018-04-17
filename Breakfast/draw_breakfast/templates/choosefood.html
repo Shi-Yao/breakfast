@@ -1,0 +1,30 @@
+﻿{% extends 'base.html' %}
+{% block content %}
+    <h3><span class="glyphicon glyphicon-user" style="color: rgb(229, 137, 36)">{{ yourname }}</span></h3><br />
+    <p class="font-weight-bold">點選餐點如下:</p>
+    <form action="{% url 'home' %}" method="get">
+         <table class="table table-striped" style="width:300px;height:30px">
+         <thead>
+         <tr>
+            <th>點餐項目</th>
+         </tr>
+         </thead>
+            <tbody>
+            {% for key, values in chooses.items %}
+                <tr>
+                    <td>
+                        {% for value in values %}
+                            {{ value }}
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <label>總價:{{ total }}</label><br />
+        <button class="btn btn-primary" type="button"  onclick="window.history.back();">回上頁編輯</button>
+        <button class="btn btn-success" type="button"  onclick="window.history.back();">送出</button>
+    </form>
+
+{% endblock content %}
+

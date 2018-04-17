@@ -1,0 +1,66 @@
+﻿{% extends 'base.html' %}
+
+{% block content %}
+  <div class="jumbotron">
+      <h1>歡迎進入點餐系統</h1>
+  </div>
+    <form action="{% url 'choosefood' %}" method="post"  >
+        {% csrf_token %}
+            <label for="nameTextInput">你的名字:</label>
+            <input type="text" style="width:100px;height:30px" class="form-control" name="yourname"  placeholder="your name">
+            <label for="menuText">菜單:</label>
+            <table  class="table table-striped" style="width:800px;height:20px">
+            <thead>
+            <tr>
+               <th>Choose</th>
+               <th>品名</th>
+               <th>價錢</th>
+               <th>不加蛋</th>
+               <th>不加菜</th>
+               <th>不加醬</th>
+               <th>改丹麥吐司+20</th>
+               <th>改酥抓餅+15</th>
+               <th>數量</th>
+
+            </tr>
+            </thead>
+                <tbody>
+                   {% for food in foods %}
+                       <tr class="{% cycle  'row1' 'row2' %} " style="width:20px;height:20px" >
+                           <td><input class="choose" type="checkbox" name="food{{forloop.counter}}"  value={{food.name}}{{food.price}} /> </td>
+                           <td>{{ food.name }}</td>
+                           <td>{{ food.price }}</td>
+                           <td><input style="display:none;" type="checkbox" name="food{{forloop.counter}}" value=不加蛋-5 /> </td>
+                           <td><input style="display:none;" type="checkbox" name="food{{forloop.counter}}" value="不菜" />  </td>
+                           <td><input style="display:none;" type="checkbox" name="food{{forloop.counter}}" value="不醬" />  </td>
+                           <td><input style="display:none;" type="checkbox" name="food{{forloop.counter}}" value=丹麥+20 />  </td>
+                           <td><input style="display:none;" type="checkbox" name="food{{forloop.counter}}" value=酥抓+15 />  </td>
+                           <td><input style="display:none;width:40px;height:20px" type="text" name="food{{forloop.counter}}" value=0 />  </td>
+                       </tr>
+                   {% endfor %}
+               </tbody>
+            </table>
+
+            <button class="btn btn-success" type="submit"  >送出</button>
+    </form>
+    <script>
+        $(".choose").click(function () {
+            var $this = $(this);
+            var $food = $("[name=" + $this.attr('name') + "]");
+            
+            if ($this.prop('checked')) {
+                //$food.last().append("<td><input style='width:30px;height:20px;display:none;' type='text' /></td> ");
+                $food.show();
+                $food.css("display","block");
+            } else {
+                $food.prop('checked', false);
+                //$food.prop('value', 0);
+                $food.hide();
+                $this.show();
+            }
+            
+            //console.log("this", $(this).parents().eq(1).children());
+        });
+        
+    </script>
+{% endblock content %}

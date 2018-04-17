@@ -1,0 +1,12 @@
+VERSION
+absolute_import
+Serialisable
+VectorVariant
+__version__
+NestedText
+XPROPS_NS
+ExtendedProperties
+DigSigBlob
+VectorLpstr
+Typed
+unicode

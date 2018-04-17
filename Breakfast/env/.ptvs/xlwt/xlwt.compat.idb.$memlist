@@ -1,0 +1,10 @@
+long
+PY3
+iteritems
+xrange
+int_types
+itervalues
+basestring
+unicode_type
+sys
+unicode
